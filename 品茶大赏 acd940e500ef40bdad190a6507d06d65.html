@@ -1,0 +1,744 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>品茶大赏</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="7eea28e5-5ada-4c17-b3c2-bd10f63c7648" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">🍵</span></div><h1 class="page-title">品茶大赏</h1></header><div class="page-body"><p id="5fca84c1-2d1e-453e-aff1-3b9f827cec99" class="">
+</p><p id="cea47e2c-75d5-4be8-8669-5f17d62a7074" class="">故事起源于一个茶香四溢的地方，在此我们就尊称其为茶姐吧！</p><p id="b12e81a0-e31d-4dbb-93e8-c11b5e00349f" class="">茶姐在凌晨1点的时候邀请当事小姐姐第二天（其实就是周六当天）前去参加她的生日宴，这么临时的邀请当事人觉得还是要去的嘛，于是买花赴宴。</p><p id="109e94e9-d6b9-4df7-9948-eeb8cef6d46f" class="">然而不料宴会结束后茶姐立刻讨要礼物，当事人说太临时的邀请了之后补上（并没有说不给礼物），茶姐立刻索要$50。</p><div id="2eec2e9b-30b9-4571-a719-e449c6e7b8fa" class="column-list"><div id="b65fa686-4ca0-425b-aab6-61bfca963787" style="width:50%" class="column"><figure id="acd940e5-00ef-40bd-ad19-0a6507d06d65" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/_01.jpg"><img style="width:1242px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/_01.jpg"/></a><figcaption>6点宴会，当天下午才邀请入群</figcaption></figure></div><div id="2d5dbe81-cd51-4009-a30f-2176bfeee96d" style="width:50%" class="column"><figure id="09478a77-52ad-47e7-9f43-8a3a73dca5b1" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/_02.jpg"><img style="width:1242px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/_02.jpg"/></a><figcaption>说了会补礼物依然索要$50</figcaption></figure></div></div><div id="2414328e-55d0-48b8-a4c2-ab28d665906e" class="column-list"><div id="d68e210f-fb81-4616-98c1-5277c0a5f07d" style="width:50%" class="column"><figure id="50f192eb-f4f5-4c59-bdd6-7cb1a996a275" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/_03.jpg"><img style="width:1242px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/_03.jpg"/></a></figure></div><div id="55dc9bd0-a615-4828-831f-f166acb1906a" style="width:50%" class="column"><figure id="7b1a4674-ff8e-4317-9e8b-7bbeacd81b66" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/_04.jpg"><img style="width:1080px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/_04.jpg"/></a></figure></div></div><div id="2fbfc4c8-1307-4642-a0c2-3857c9b4fe7a" class="column-list"><div id="bc84494f-903f-4213-84f2-ff746e6f5fef" style="width:50%" class="column"><figure id="c89814e1-4feb-4160-8c3c-0aedb81bd600" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/_05.jpg"><img style="width:1242px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/_05.jpg"/></a></figure></div><div id="2c7d600f-8000-45be-9075-1bba12d0de6b" style="width:50%" class="column"><figure id="aaa50537-b6b0-4f40-b2b1-18e911869e31" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/_06.jpg"><img style="width:1242px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/_06.jpg"/></a></figure></div></div><p id="c1c96674-4fe8-4698-bcdf-78a92de7a855" class="">
+</p><p id="61f08033-c45a-44a6-9f5b-6c8a13dcc666" class="">然后茶姐声称这顿租用大楼内<strong><mark class="highlight-orange">免费</mark></strong>烧烤架、由<mark class="highlight-orange"><strong>宾客自带酒水</strong></mark>的盛宴，花费超<mark class="highlight-orange"><strong>$900</strong></mark>！</p><div id="68de5e1c-862b-4047-8f2f-5e2f8d5230e5" class="column-list"><div id="0bb77692-d94b-4fcd-ad71-4e402d80f971" style="width:18.75%" class="column"><figure id="a2db7088-c608-40b5-b4ae-b3cc28189684" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3300.jpg"><img style="width:120px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3300.jpg"/></a></figure></div><div id="152072ab-6aeb-4d56-9c81-f28db0ff0ced" style="width:81.25%" class="column"><figure id="cce250f0-eb11-4555-ae74-9335be2dffef" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/_07.jpg"><img style="width:480px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/_07.jpg"/></a></figure></div></div><p id="ee20dde4-57a5-47d3-867c-90c8820b70fb" class="">
+</p><p id="d6ffccaf-3056-4acf-8a56-76a17d9afe33" class="">让我们流着口水瞻仰一下$900野外豪华大餐：</p><figure id="ce11596c-3753-4e25-8570-c4e9d86c15ca" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/_08.jpg"><img style="width:480px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/_08.jpg"/></a></figure><p id="95097d51-ef8a-43bc-89f7-13c6018871ae" class="">
+</p><p id="d6526e41-7a02-41c2-b71d-d8ff7d67b9fc" class="">...</p><p id="755713a8-3d1d-43e9-be94-f74434e2e602" class="">......</p><p id="d8922235-4de2-4276-bb61-68a674102ab6" class="">。。。</p><p id="0774c36a-34ba-4274-9a3a-f0acb7be7c4d" class="">。。。。。。</p><figure id="225fd2de-e5fd-458e-a5a1-8bcef3e3e0bc" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3307.jpg"><img style="width:288px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3307.jpg"/></a></figure><p id="49eb998b-ce3b-4287-87d1-c89ef2f83821" class="">
+</p><hr id="1a04e450-e467-466c-95b9-82ec7b2a72b8"/><p id="c9f01686-4687-42da-a904-e7057c7afc87" class="">nah本身这只是个令人吐槽的无语事件，都是小事儿，然而茶姐却是【该大楼3群】群主，这引起住户们一下想起从前这个群发生过的往事：</p><ul id="acd534e1-dbf4-401c-a263-5fe3d0e864f1" class="bulleted-list"><li>爆料楼内确诊Covid女生是yp感染的而群主任其传播流言散布女生照片，自己只顾发搞笑照片</li></ul><div id="f9ea1183-a623-48ea-aa19-12ca85d1e2fb" class="column-list"><div id="b67e781b-ffc6-4fea-8a30-11aa638948e4" style="width:50%" class="column"><figure id="19d2923e-c643-4f37-81d7-0fd7ecd627d9" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/_01%201.jpg"><img style="width:336px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/_01%201.jpg"/></a></figure></div><div id="71650222-ae37-49b6-b8f9-db7acb373682" style="width:49.99999999999999%" class="column"><figure id="4ccaff10-c999-4a83-bf70-fec9ecb3c959" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/_02%201.jpg"><img style="width:288px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/_02%201.jpg"/></a></figure></div></div><ul id="f4a40032-4f98-44ae-9c27-dc194a1e2e74" class="bulleted-list"><li>住户在群里爆料清洁阿姨偷表，报警约保洁阿姨大堂对峙而后消失不见，保洁阿姨苦等2小时求公正，群主将保洁阿姨踢出群，当阿姨求情加回群后产生如下对话：</li></ul><figure id="efd41cde-e703-4d43-9fad-b70b40591a4d" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/_01%202.jpg"><img style="width:432px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/_01%202.jpg"/></a></figure><p id="fa45c2ae-3a89-4649-934e-30742f7c4867" class="">
+</p><p id="14851037-6c7f-44e3-80ef-18d3ee7a48bf" class="">
+</p><p id="5087c5bf-b988-4c37-8a76-6b0651440bc5" class="">
+</p><figure id="b3ee8ecc-25a6-48c5-9a8a-238fe8b4d599" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3303.jpg"><img style="width:200px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3303.jpg"/></a></figure><p id="4e9e5507-d4ac-4309-a5c5-446434342a60" class="">
+</p><p id="e2b3059c-4923-47c6-a30e-928ab4fbbfe3" class="">
+</p><p id="7f496312-e2fb-4ed4-b8b7-216cb831dcde" class="">啊这...没有律师资格证提出代理诉讼似乎是违法的吧？那茶姐应该是有证的吧！的吧！吧！啊！</p><p id="2d2d8d2d-2d83-4f30-80b7-bfff82d5d487" class="">
+</p><p id="fb124655-c673-4f27-9a0b-c46a6427599f" class="">Anyway总之茶姐这个群啊整出不少幺蛾子，那看看茶姐自己公开的信息吧。</p><figure id="3e5d826d-ff12-46b6-8070-25a96e1a6ead" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65.jpg"><img style="width:384px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65.jpg"/></a></figure><p id="63df94b0-75f9-428f-8ef5-145466f88e26" class="">诶看起来是心理医生的样子，那前文的法律代理....</p><figure id="9b50c17b-b18a-4760-9275-61f132678088" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3303.jpg"><img style="width:200px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3303.jpg"/></a></figure><p id="6d42e7de-06c2-4237-bbae-4ef05e4ad1f4" class="">
+</p><p id="d1ce6c43-0475-4a4b-bda2-3164ee135557" class="">不慌，再看看ins：</p><p id="ef00f09a-1f24-45f6-ae3c-294b63623cd2" class="">
+</p><figure id="0ae8a244-7f09-4a98-b255-05e1cdbecd55" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/ins.jpg"><img style="width:384px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/ins.jpg"/></a></figure><p id="7feeed86-3d0d-438e-8b60-f624b3344562" class="">
+</p><p id="e4d3e41c-fa0b-4d03-8dbb-8f7a370d74ea" class="">nah这就是心理医生了嘛！还有个人主页，点进看看，诶茶姐还有Youtube频道</p><figure id="a7334294-84fe-4d03-a943-a921ef4fa639" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3300%201.jpg"><img style="width:144px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3300%201.jpg"/></a></figure><p id="766b447d-1628-4c66-8bea-669fdf539af1" class="">
+</p><p id="6e9a19c8-c0c4-4f94-9107-117ff4e60e7f" class="">
+</p><figure id="f8478de1-cde0-44d7-81e1-7f9e440c8b16" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/youtube_01.png"><img style="width:2646px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/youtube_01.png"/></a></figure><p id="3c74857d-4f3e-4fa0-b7fa-73cf6378c6f8" class="">
+</p><h1 id="0224a636-021f-48e7-8ecd-85fbeb63268f" class="block-color-orange">“How to become a millionares?”</h1><p id="edd97f8d-ba8f-4746-ba91-aa8e3ded553a" class="">
+</p><figure id="0fa15892-641c-4d93-9de8-e849f0bf2a92" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3299.jpg"><img style="width:192px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3299.jpg"/></a></figure><p id="25aee3aa-9657-4e1b-b58f-391aec19a224" class="">
+</p><div id="e7946e57-cb4e-49b7-b848-7ba4c3e749c0" class="column-list"><div id="80083c95-15c6-4f16-a6b8-286f8c6feca4" style="width:43.75%" class="column"><p id="7331bec7-c99c-47d2-b37b-ad67e5283a0b" class="">以及我才学浅陋，特意查了一下</p><p id="fe8961c6-21fc-4ded-8cc8-523703e6b427" class=""><strong><mark class="highlight-orange">a millionares </mark></strong>的含义</p><p id="2d89826d-84fd-4e4b-ac9e-f936bd840d53" class="">
+</p><p id="6962b51a-78a3-4f9a-9873-99fa4c988090" class="">
+</p><p id="73077de8-0a23-4c82-86ae-a9626913444c" class="">
+</p><p id="75a2f156-6ae5-4df6-924c-69e87e8c506b" class="">
+</p></div><div id="9c8ed5c1-6a7b-4278-aac4-3de75b496ffc" style="width:56.25%" class="column"><figure id="37c721ad-30e4-42d1-b52e-1c00d4d77286" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/youtube_02.png"><img style="width:288px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/youtube_02.png"/></a></figure><p id="fd652a6d-cf39-49b1-802e-36afad833b13" class="">
+</p></div></div><p id="cc10345c-1ef1-4841-8715-4a4fd152d10d" class="">nah，YouTube标题改过来了，网站这一定是typo吧！po吧！o吧！吧！啊！</p><p id="c2ba2ced-68f9-4776-9c5f-808a0c192f66" class="">
+</p><figure id="7be20990-08f4-404a-ac37-49f5f3245ffa" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/youtube_03.png"><img style="width:2696px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/youtube_03.png"/></a></figure><p id="9e09a3e3-8d3e-433c-a5ec-3d2913c4d2ff" class="">
+</p><p id="743e61b3-d4b6-4c26-8b05-5c048f4ae38d" class="">接着在茶姐YouTube主页里可以看到她曾经的视频名字叫<strong><mark class="highlight-orange">KatyQ Live，</mark></strong>让我们吧唧吧唧键盘观摩学习一下这个诞生于2015年的自媒体吧！</p><figure id="51d224d0-9969-42f5-8d21-18647233b39d" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3300%202.jpg"><img style="width:192px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3300%202.jpg"/></a></figure><p id="e5aa1ec0-87b1-4e7d-ba70-da83ee53aefc" class="">
+</p><p id="6c24f2a0-848b-47b7-ba0f-893de977f8a3" class="">
+</p><h2 id="28da7b5f-cc32-4ebf-afa2-b4a131740ee3" class="block-color-orange">wait，老姐还有wiki呢？？？？？？</h2><p id="b3876749-9741-4b55-99dd-86a7f6884bc0" class="">
+</p><figure id="2d6a042e-6ceb-493f-bd53-41fbac02d1c7" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/wiki_01.png"><img style="width:2360px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/wiki_01.png"/></a></figure><figure id="c7816b4d-d597-463c-945e-1eddc9a161f2" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/wiki_00.png"><img style="width:2010px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/wiki_00.png"/></a></figure><p id="cb841ea7-5334-43fe-9428-05f134b30a6a" class="">
+</p><p id="f4da154b-9ab4-4d26-b827-9a103d881f38" class="">
+</p><div id="2f333eaa-f18e-4daf-8edf-01cf0f8b60b7" class="column-list"><div id="b2b290bd-fcc0-4492-ba69-b93aca7046c0" style="width:20%" class="column"><p id="3671d85e-cb4a-4007-9d6e-60b505db4a20" class="">
+</p><figure id="5c63dc72-2edf-4c77-8e41-44a5e0242bd6" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3303%201.jpg"><img style="width:200px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3303%201.jpg"/></a></figure><p id="16942ec0-f72e-4dc3-b546-5a8dc8a517b6" class="">
+</p></div><div id="fc8e5a08-0f0c-4241-8038-0b4fa6519e36" style="width:20%" class="column"><figure id="ec3ca9a0-21a8-4c83-8324-bf5c025531ee" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3307%201.jpg"><img style="width:144px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3307%201.jpg"/></a></figure><p id="75783da9-346e-4307-80f3-4ea22b0fa9d3" class="">
+</p></div><div id="e6c49d20-bf64-4923-a2e7-7c14e19043a8" style="width:20%" class="column"><p id="9992af47-f7a3-4753-8dd6-a80b6a3828e8" class="">
+</p><figure id="8c6b44d7-f78f-48ca-8239-2624e0f6b287" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3324.jpg"><img style="width:720px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3324.jpg"/></a></figure><p id="246f5dcd-c95c-49b6-9d8a-f80df200de66" class="">
+</p></div><div id="f6225d54-5522-4eac-87cc-929f4e84e136" style="width:20%" class="column"><figure id="7c21e84d-0c08-472f-b627-a8692d8ded40" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3336.jpg"><img style="width:690px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3336.jpg"/></a></figure><p id="75cdb278-647f-4d64-b775-048062d3b791" class="">
+</p></div><div id="7916b99e-c247-4cea-bc17-5e992e9c14f1" style="width:20%" class="column"><figure id="aedad10d-6478-4147-aaf4-20f6daf2a4a3" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3337.jpg"><img style="width:690px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3337.jpg"/></a></figure><p id="d6b1edeb-aad8-456b-a11f-b58840fc1c4f" class="">
+</p></div></div><div id="657b7f8e-6fbf-440a-9177-02aeb197cd0b" class="column-list"><div id="3d029dcc-f13d-4e86-916c-7f559035a699" style="width:50%" class="column"><p id="b15fa607-42b1-4921-8297-679ee1907101" class="">这么说来，茶姐竟是...</p><h1 id="b9a50c52-99d5-4c53-b3dc-cba427cddf08" class="block-color-orange">乔冠华与日本人的孙女！</h1><p id="c4c27237-71f1-4c67-9bbe-babc20aa918b" class="">
+</p></div><div id="28105b4a-2874-469a-87a3-240d19136fd4" style="width:50%" class="column"><figure id="9f9652af-4a6b-4567-a95c-c3dc8b21e3ca" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3325.jpg"><img style="width:500px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3325.jpg"/></a></figure></div></div><p id="2b9335dd-f413-4ffe-84b7-24d8b841c9a5" class="">
+</p><div id="85632e26-e5a8-4c38-b750-3b85e0575f02" class="column-list"><div id="6ae67b55-38a4-4aa4-8ba5-171c6dfeb006" style="width:62.5%" class="column"><h2 id="25b3e35e-1219-4d62-9773-b838cf4e4766" class="">乔冠华何许人也！！</h2><p id="ab169030-1d74-49c0-bf47-3fbb7860cde6" class="">
+</p><p id="e669f83b-3989-4c09-9746-15924d470e43" class="">中国第四任外交部长</p><p id="ca1862a1-2136-443c-8d8a-7ee2090f9f10" class="">率领中国代表团第一次出现在联合国会议大厅，恢复中国在联合国合法席位</p><p id="ab239cdf-1581-4346-827d-3f31ffc8f364" class="">
+</p><p id="d6330b94-1277-43d3-9aab-2caa555c66f3" class="">那Wiki上写的资料总不会有假吧？</p><p id="165691c8-8bec-4c97-81fb-abbb29e0b530" class="">
+</p><figure id="14d7bbbe-c2ea-495a-a999-591712f54f5c" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/Untitled.png"><img style="width:1308px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/Untitled.png"/></a></figure><p id="ef8083b2-fd4e-4213-ba85-2b9237c8eb06" class="">
+</p></div><div id="4fa23a49-8457-4998-b753-b12193fda310" style="width:37.49999999999999%" class="column"><figure id="84a6f9ef-ef6f-4c99-9ce7-96754a963950" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/Untitled%201.png"><img style="width:618px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/Untitled%201.png"/></a></figure></div></div><p id="067e033b-088b-4d7f-8e06-7fede1354d94" class="">
+</p><p id="f40c98a4-91b6-4514-a507-b7f1eec99626" class="">可是在百度百科以及各路资料消息里都没有提到过乔冠华有个日本原配</p><p id="46d8272a-a34a-4b78-b0fb-aea35610d1d0" class="">
+</p><figure id="59cbfc64-1807-47c1-a60c-408123a92b4f" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/Untitled%202.png"><img style="width:2250px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/Untitled%202.png"/></a></figure><p id="9185ba1e-b235-40b0-8e0e-a9414f0437d3" class="">
+</p><figure id="b8ba26d2-c06c-44a0-b1df-51b4b8f1df61" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/Untitled%203.png"><img style="width:1730px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/Untitled%203.png"/></a></figure><p id="33060de6-60b0-4763-bca8-fe9740dbe216" class="">
+</p><p id="0d726fcd-b55a-456d-a873-acda28c36633" class="">诶等会儿，乔楚儿的wiki上”参考文献“写得啥？？</p><figure id="7ee6cd38-e154-4861-bc54-24e6606cc7fb" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/wiki_11.png"><img style="width:720px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/wiki_11.png"/></a></figure><figure id="16755774-0a11-400d-b6ad-4335169f4fb6" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65.png"><img style="width:624px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65.png"/></a></figure><p id="12001606-be64-453a-9a83-4ee21fc9f1c8" class="">
+</p><figure id="86213b88-ef21-4626-93b9-e1f6cac7f007" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3326.jpg"><img style="width:240px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3326.jpg"/></a></figure><p id="80f31f63-d6b5-408c-a63c-d6155a5f72d8" class="">
+</p><p id="588face3-d619-4aeb-bbf9-3dd67646d1b0" class="">所以Wiki是凭借...这几篇报道来通过的百科...吗？</p><p id="be25c8a2-1195-4135-9daa-cf464d5ba218" class="">
+</p><figure id="2491c0a7-84f9-4b67-b703-46e1506b8a0a" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3329.jpg"><img style="width:288px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3329.jpg"/></a></figure><p id="ab67a0e3-fb5e-4b46-a9a9-f84119f16fb2" class="">
+</p><p id="5118527f-8ed7-462a-a429-19f7b72b9433" class="">且以上三篇文章已经全部处于archived状态</p><figure id="deef7302-9bfc-4e61-9cb8-8bfaf248868d" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/archive_01.png"><img style="width:528px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/archive_01.png"/></a></figure><figure id="9b731ee7-7503-4086-a458-0110e0fdc3d7" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/archive_02.png"><img style="width:528px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/archive_02.png"/></a></figure><figure id="a90335f5-a971-4900-9a7a-3eb9fd4992d0" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/archive_03.png"><img style="width:528px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/archive_03.png"/></a></figure><p id="3195e67d-495c-4c6f-9222-de6f7ffb40c7" class="">
+</p><p id="95ccb245-c53e-4f28-aea8-f058949b72aa" class="">
+</p><p id="8436af92-760b-48c6-a784-51ee464ab172" class="">那我们再来看看网络上关于乔楚儿的信息：</p><p id="1cf2c2c5-25a5-4579-bede-b9f4d91a9ff7" class="">
+</p><div id="d926c374-3440-48ba-b77e-b765ad7045f4" class="column-list"><div id="7f974609-c137-45df-8c9f-c0de528d67a1" style="width:50%" class="column"><figure id="6c6b8b3b-67d6-45ce-a5b1-8190f46a20be" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/Untitled%204.png"><img style="width:1706px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/Untitled%204.png"/></a><figcaption>Google搜索：2条百科，其他都是别人</figcaption></figure><p id="023ed858-7f7f-4d5d-966d-02d6c35ef9d5" class="">
+</p></div><div id="c70ca960-f55a-427f-b82a-4d32a218cac2" style="width:50%" class="column"><figure id="dbd989ef-2143-4bc4-8a7b-5d427258d6fd" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/Untitled%205.png"><img style="width:1972px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/Untitled%205.png"/></a><figcaption>百度搜索：(⊙o⊙)… 无...</figcaption></figure></div></div><figure id="8b647d73-8be5-4b3e-9c90-1eb676b4f461" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3339.jpg"><img style="width:240px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3339.jpg"/></a></figure><p id="cbaff652-d239-4b2e-b5e7-3c5cc34da31f" class="">
+</p><div id="af842d24-f05c-4491-b380-05a2ab85db83" class="column-list"><div id="2df1238f-5d2f-4003-b5d5-22600ac8ce17" style="width:50%" class="column"><p id="503fa85d-2cab-45ec-9c07-1c71aad705fb" class="">咋除了那俩百科其他啥玩意儿也没有啊？</p></div><div id="401a0fcd-102a-443d-a0c4-a44fd7c7a562" style="width:50%" class="column"><figure id="cc2fecdf-989a-47a2-a015-e482d5ffca74" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3341.jpg"><img style="width:100px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3341.jpg"/></a></figure></div></div><p id="c3e74dc5-1c68-4dde-89ba-e5b0a38304aa" class="">
+</p><p id="8fd565b4-a838-47e6-ba5c-d90656b24a1b" class="">不慌，互联网是有记忆的，让我们来看看百科们的编辑历史~</p><p id="fee0fa98-c0c9-4ba2-badc-49a820ec29e1" class="">
+</p><h3 id="2ee94073-9bde-410a-bc30-463d00cf3f57" class="block-color-yellow_background">乔楚儿Wiki百科的编辑历史：</h3><ul id="c2429253-971a-42b4-8b33-7ff8d67d2b8b" class="bulleted-list"><li>2015年2月5日，<mark class="highlight-orange_background">&quot;Cbsnew5687&quot;</mark>创建并添加大量资料上传的照片后被wiki删除</li></ul><ul id="ff8e0f55-1dba-44fd-a613-59c570fe0f34" class="bulleted-list"><li>2015年2月15日，<mark class="highlight-orange_background">&quot;Nbc60mins&quot;</mark>添加关于乔冠华的超链接</li></ul><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="175bd398-76fc-43cf-b417-6df0cec0ee74"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">上方两个账号显示红色，均已注销
+但这两账号名字还挺像模像样的哦...NBC和CBS是美国两大主流新闻媒体</div></figure><p id="410e3342-0381-4039-bd3f-cacb5786b571" class="">
+</p><figure id="01573575-f489-4c38-a956-e9a87b3900d0" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/wiki_02.png"><img style="width:624px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/wiki_02.png"/></a></figure><figure id="472b19b0-b8ab-4c3b-b9e3-98ca72e8b945" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/wiki_03.png"><img style="width:624px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/wiki_03.png"/></a></figure><p id="10066db6-8018-4562-a15c-fd697439d847" class="">
+</p><ul id="c82ef500-4fcd-4989-b460-98d5d2e48bdf" class="bulleted-list"><li>2020年1月20日，<mark class="highlight-teal_background">&quot;Tianmaiquan&quot;</mark>移除了大量信息，又在6月30日被<mark class="highlight-orange_background">&quot;47.200.5.124&quot;</mark>大哥加了回来</li></ul><figure id="63f1a30e-9b12-455c-8fbf-278f206229e0" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/Untitled%206.png"><img style="width:624px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/Untitled%206.png"/></a></figure><h3 id="0fde1db7-47c7-42be-a469-c3d75c90e81e" class="block-color-yellow_background">乔楚儿头条百科的编辑历史：</h3><ul id="75837113-877c-403b-a27b-79567f0432fc" class="bulleted-list"><li>2015年2月5日和15日，<mark class="highlight-orange_background">&quot;Nbcnews&quot;</mark>编辑完善</li></ul><figure id="5af7af69-37a7-4497-92f9-a74332a2cc3d" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/wiki_10.png"><img style="width:624px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/wiki_10.png"/></a></figure><p id="84d5c48a-13c8-4561-b0d6-b383dd37927f" class="">
+</p><p id="0f2b1e52-2193-4489-a9ec-278a86c554e7" class=""><strong>诶，NBC老哥！又是你啊！</strong></p><figure id="5c018f85-99fd-4711-9c6b-e7c7d5b8b7d4" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3338.jpg"><img style="width:240px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3338.jpg"/></a></figure><p id="46c67b81-df13-4bed-8d4b-f8f00457a16f" class="">
+</p><h3 id="b327be97-722b-468e-8ee2-ce580b6ec13d" class="block-color-yellow_background">乔冠华Wiki百科的编辑历史：</h3><ul id="1dd50df7-ec1a-4f05-b874-5bf9a5ce798b" class="bulleted-list"><li>2015年2月15日，&quot;Nbc60mins&quot;添加有关&quot;Akihito&quot;和&quot;乔楚儿&quot;的信息</li></ul><figure id="1d63d4f9-3add-4efd-b85b-b3c5acb74fab" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/wiki_04.png"><img style="width:624px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/wiki_04.png"/></a></figure><p id="b7814634-1b6d-4e88-9dbc-dccebcd06386" class="">
+</p><ul id="a2c29df3-7415-406d-832b-97bf6205c0c4" class="bulleted-list"><li>2020年1月20日，<mark class="highlight-teal_background">&quot;Tianmaiquan&quot;</mark>又删除了&quot;Akihito&quot;和&quot;乔楚儿&quot;相关的信息</li></ul><figure id="cf7517c5-4b90-4c2c-b4da-f0cdc51a36a7" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/wiki_06.png"><img style="width:624px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/wiki_06.png"/></a></figure><ul id="b10578ce-b14f-418b-b19f-72aab13f4178" class="bulleted-list"><li>2020年6月30日，<mark class="highlight-orange_background">&quot;47.200.5.124&quot; </mark> （又是这个哥！）又加回来了，还加了挺多</li></ul><div id="e554cbed-221f-46a6-b1d5-3e32a13e362b" class="column-list"><div id="32c74b08-283e-4996-baf9-4bcdbc9430f1" style="width:33.33333333333333%" class="column"><figure id="40a5c2b7-537e-4803-9179-94a302001da4" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/wiki_07.png"><img style="width:576px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/wiki_07.png"/></a></figure><p id="04cf14e8-6d7e-48fa-a5a0-732997b43027" class="">
+</p></div><div id="17884d29-f602-4870-8b51-ff38c1919947" style="width:33.33333333333334%" class="column"><figure id="3b1768f6-b8f5-490d-ad96-7e347d77f322" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/wiki_08.png"><img style="width:1008px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/wiki_08.png"/></a></figure><p id="485b6d54-ebb7-40c7-a42d-0a23e638e7f3" class="">
+</p></div><div id="c1c61e98-b0fd-437b-bad5-04b14bf5ed93" style="width:33.33333333333333%" class="column"><figure id="03ee42c4-ea83-4a8e-bea5-ada1e7315099" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/wiki_09.png"><img style="width:1008px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/wiki_09.png"/></a></figure></div></div><p id="76acfbe3-2899-457e-99af-93c84e17cac1" class="">
+</p><h2 id="1c9ba2a7-b943-410e-abf2-6d92fbfaeae5" class=""><strong>同志们！发现了什么没有！</strong></h2><h3 id="cbeaefdc-3292-433d-90e0-c5733200862e" class="block-color-red"><strong>无论是乔楚儿本人还是乔冠华的wiki，都是2015年2月由名为&quot;nbcnews&quot;或者&quot;cbsnews&quot;的账号同日创建/修改</strong></h3><h3 id="6cd00310-0660-4373-ac84-23e9ec8736cd" class="block-color-red"><strong>且都被&quot;Tianmaiquan&quot;于2020年1月20日移除，后又都由&quot;47.200.5.124&quot;这位老哥重新添加。</strong></h3><p id="2877e5b1-eae5-4d1a-922b-b819afafa16d" class="">
+</p><figure id="29187c07-8ce0-427f-89b3-71dd9e5b8fd0" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3337%201.jpg"><img style="width:240px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3337%201.jpg"/></a></figure><p id="8f09784a-8530-4894-8b79-05671fcac6cd" class="">
+</p><p id="aa6e790f-6ed8-4b0a-8fc7-41fb345c9d59" class="">
+</p><p id="936f10a0-cb8c-4cd4-95d5-4ac1e4fc588e" class="">那如果再以<mark class="highlight-orange"><strong>”乔冠华 乔楚儿“</strong></mark>和<strong><mark class="highlight-orange">”乔冠华 akihito“</mark></strong>在中文互联网搜索，<strong><mark class="highlight-red">找不到任何在2015年前出现的关联信息</mark></strong>，唯一天涯社区这个发布于2008年的帖子，提到乔楚儿的那段也是在2015年之后（2017年）的回帖。</p><p id="fed02f68-286a-4bbf-a92d-85091f77b95e" class="">
+</p><div id="a064afb1-2159-49a0-be85-5891cd3f1a12" class="column-list"><div id="065e5e35-19ab-4eab-9142-57cfca3a4c86" style="width:50%" class="column"><figure id="b25a6598-c66b-434f-a377-839211b27b44" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/_akihito.png"><img style="width:336px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/_akihito.png"/></a><figcaption>”乔冠华 akihito“ google搜索结果</figcaption></figure><p id="065c64db-d4bf-4af3-b1a8-fd9582b435b4" class="">
+</p></div><div id="9dd79596-ba7c-4192-9f52-9aef07101e36" style="width:50%" class="column"><figure id="d97e9d63-a6c2-4794-b213-fdc723203a0e" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/_akihito_02.png"><img style="width:1458px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/_akihito_02.png"/></a><figcaption>”乔冠华 akihito“ 百度搜索结果</figcaption></figure></div></div><p id="09224fb2-cbac-43f5-8afa-3a503cbc31ce" class="">
+</p><div id="5be5e981-e6e1-4a6f-8b43-db895a8049c1" class="column-list"><div id="4bb772f1-e74f-4552-8795-834ce0f3f61c" style="width:50%" class="column"><figure id="843d6bc5-6530-47e6-84f2-228aeb793171" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/__01.png"><img style="width:1534px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/__01.png"/></a><figcaption>”乔冠华 乔楚儿“google搜索结果</figcaption></figure><p id="d237cb45-8f75-42e3-b364-d277ba600e86" class="">
+</p></div><div id="4e6278d3-5e88-4308-b787-467dcf46fe35" style="width:50%" class="column"><figure id="a765914a-09be-43b6-ab4a-59503529f845" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/__02.png"><img style="width:1620px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/__02.png"/></a><figcaption>”乔冠华 乔楚儿“百度搜索结果</figcaption></figure><p id="031a9e66-0bdf-4dcb-9044-6fc7bcf8f4d4" class="">
+</p></div></div><div id="c11200cd-037d-4fe5-bf21-3baffa635d3d" class="column-list"><div id="ddfce27a-9010-4839-9f96-2067cad29fc6" style="width:50%" class="column"><figure id="182acac3-3958-4d3a-9daa-2ad9da03e599" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65%201.png"><img style="width:1948px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65%201.png"/></a><figcaption>天涯2017年的回帖，估计是看了wiki之后说的</figcaption></figure><p id="e417a07b-71e0-44e1-b0eb-6e107ad01893" class="">
+</p></div><div id="7781db49-ed66-4a1b-9d1a-fe350029d349" style="width:50%" class="column"><figure id="539e6b13-62cf-4d11-acf0-db42f92151ac" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/_02.png"><img style="width:1904px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/_02.png"/></a><figcaption>emm，乔氏子女知道自己因为”不提原配子女“而被网民指责吗？</figcaption></figure><p id="1a22c914-d00f-4112-8419-625d0bfb7e35" class="">
+</p></div></div><figure id="2bda4eb5-c2de-4fe1-9a44-f5767b3df58b" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3299%201.jpg"><img style="width:300px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3299%201.jpg"/></a></figure><figure id="d6f56a37-fadb-4e84-9a73-a6b673c52beb" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3340.jpg"><img style="width:288px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3340.jpg"/></a></figure><p id="2f5cb631-0fb7-4518-bc0c-90da81ed3984" class="">
+</p><p id="76ab4883-c8a1-427f-9530-43f2ae5253ab" class="">
+</p><p id="2c0b42b3-b571-49c1-83b7-981a926942aa" class="">于是我们换个思路，Akihito是日本人嘛，那我们换<strong>日本搜索引擎</strong>看看：</p><p id="e6864d10-ada1-4c38-aba5-c30732167ab2" class="">
+</p><figure id="4f276586-7453-46ff-acdb-82c082073c8e" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65%202.png"><img style="width:624px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65%202.png"/></a></figure><p id="0dc2cfb6-0102-43eb-a8c0-2fe269acb371" class="">
+</p><div id="3649ae20-76ad-48c1-aad1-194bb11ed021" class="column-list"><div id="b07927a8-faf3-4022-9702-187db382792c" style="width:50%" class="column"><figure id="8b3d51ac-9fb7-4bd6-841d-0b258741b440" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3338%201.jpg"><img style="width:336px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3338%201.jpg"/></a></figure></div><div id="438b3b57-6abb-4c20-88ef-aaf812a454ed" style="width:50%" class="column"><figure id="7d9635ad-5643-46fb-b1ca-2042dd9ddd71" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3324%201.jpg"><img style="width:720px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3324%201.jpg"/></a></figure></div></div><p id="0ae269df-d867-44d0-a1bc-baad11ee0396" class="">
+</p><h2 id="c0f4e604-8e82-4b68-99a4-0fdd25ce64a4" class="">Akihito是2019年刚退位的日本明仁皇帝的名字！！</h2><p id="7e6d0b71-a94f-4b4d-ade7-40c872c78a74" class="">
+</p><p id="1838b378-9650-43b2-9d7f-d1b4c6aae10e" class="">为此又特地搜索了资料，日本天皇是没有姓氏的，其他皇室的姓氏会以所属皇族分支（xx宫）来代称</p><p id="1ca1fde2-1855-431d-a1cc-37f03f7dcb57" class="">而且皇室男子都以”仁“（大概对应的是-hito/-ito）做结尾，女子都以”子“做结尾</p><figure id="bbf8efca-4d09-4c68-9ad0-3f0851571588" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65%201.jpg"><img style="width:576px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65%201.jpg"/></a></figure><p id="958cbd45-fbd8-403e-a6cc-c15d16bd6afe" class="">
+</p><p id="ab4bb4d9-39ce-4b28-a96e-ce43bbe29d99" class="">这个Akihito不光是天皇本身的名字，关键这是一个<mark class="highlight-red"><strong>男名</strong></mark>啊！</p><p id="e0cbd746-d195-48e4-be19-a9cfc35cc703" class="">毕竟明仁皇帝出生于1933年，而乔楚儿祖母Akihito的生卒年月都写得非常清楚，又出生于官宦人家，那能跟天皇重名的人一定能查得到的吧？</p><figure id="8f08f8eb-87cc-4307-b490-1a95de15e747" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/Akihito.png"><img style="width:624px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/Akihito.png"/></a></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="99e1baf3-6b79-4c51-8710-494b42061f59"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Akihito的日语是 あきひと，”仁“就是 ひと</div></figure><p id="d9dddb7c-c0bb-4392-b248-0debd6547187" class="">
+</p><div id="4388b4f6-fa77-405d-95ec-456766430412" class="column-list"><div id="523c09e3-13d4-4b2d-8d4a-4db32cc7048e" style="width:50%" class="column"><figure id="f65fdeb5-27ae-4d99-8904-9fd492f67f4d" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/_01%203.jpg"><img style="width:336px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/_01%203.jpg"/></a></figure></div><div id="e35fa350-cc04-4af1-b38d-9f235cf4ac0c" style="width:50%" class="column"><figure id="9a77f58c-35d3-411b-bcf1-50e4999897cd" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/_02%201.png"><img style="width:1242px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/_02%201.png"/></a></figure></div></div><p id="96061de9-2ecd-419d-a7cf-30f7ef156240" class="">
+</p><p id="cf678076-506a-4127-8d51-2cabe4426c0b" class="">
+</p><figure id="05c5591c-f712-4f22-a91e-de5d8cb72562" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3341%201.jpg"><img style="width:100px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3341%201.jpg"/></a></figure><figure id="555b8a73-b212-4e42-bf8b-88159436c996" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3339%201.jpg"><img style="width:288px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3339%201.jpg"/></a><figcaption>一定是年代久远互联网的问题...</figcaption></figure><p id="553b31ca-1801-45dd-8e01-76b65280ab16" class="">
+</p><p id="f6aecd76-9471-41a0-ac6c-0c63980db384" class="">
+</p><h2 id="5f0b8bd6-f3a6-440d-9e0e-7d50b4937df6" class="">同志们！发现了什么没有！</h2><h1 id="e880bf12-a4ac-4165-b0c3-4df666bf4337" class="block-color-red">乔冠华的这个与日本天皇同名的日本原配Akihito和孙女乔楚儿</h1><h1 id="2fe8afb7-ef18-436e-affe-5f901a5304f1" class="block-color-red">从前在中日英三语互联网都毫无痕迹...</h1><h1 id="93b63dab-20a9-4151-bb48-fdd02f9d66f5" class="block-color-red">但在2015年2月5日和2月15日！</h1><h1 id="3dda4df2-0452-4f32-b9d3-8d0688f95f62" class="block-color-red">被&quot;nbcnews&quot;和&quot;cbsnews&quot;两位老哥一手打捞</h1><h1 id="a64c9059-5d05-45e1-90c2-fb3b624db7e8" class="block-color-red">终于横空出世（此处指的是词条哦）</h1><h1 id="ccf5aef4-f71d-45db-99c6-0563902f3de9" class="block-color-red">总算”落叶归根“（此处指的是词条哦）</h1><h1 id="aaa293b0-b6cd-454b-a803-579d137c247b" class="block-color-red">如口香糖一般牢牢黏在自己和乔冠华的wiki之中</h1><h1 id="32a2b161-e5fb-4c13-b67c-19968131776c" class="block-color-red">从此成为中文互联网上再难被抹去的一尊里程碑！</h1><p id="743613b0-b27d-4e2c-b511-64ebb189904b" class="">
+</p><figure id="c843dd30-3407-4eec-8a69-ffc8af4aacd9" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3298.jpg"><img style="width:336px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3298.jpg"/></a></figure><figure id="4443296e-2c22-4ed5-9330-c4fcb5369861" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3335.jpg"><img style="width:432px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3335.jpg"/></a></figure><p id="8809bda9-14eb-4b5f-b478-27360c7e2deb" class="">
+</p><p id="2df7ce69-8917-4a81-855d-f3b175996ed7" class="">
+</p><hr id="b605ab9c-368e-409c-a804-debdd6a3dfd3"/><p id="b79aff87-cb91-47ce-8d4a-528c02801240" class="">
+</p><p id="d0c4acf0-7c39-41fb-99a6-2d3417928d79" class="">nah，世界就是这么奇妙。</p><p id="5a4ab2df-78a9-48ed-96be-18a2a71517da" class="">这时候再回去欣赏一下乔楚儿女士，哦不，茶姐的Youtube，竟然又发现了新的东西。</p><figure id="5f68225b-09d6-49c4-a36e-a463f02f43c1" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3329%201.jpg"><img style="width:288px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3329%201.jpg"/></a></figure><p id="693daf5f-9a4e-471b-ad3a-b1f21bc13876" class="">
+</p><p id="f97b29b9-39b3-4194-ae20-85d7a29a16fd" class="">在那条如何成为百万富翁的底下，有茶姐自己贴上的robinhood referral link</p><figure id="3a3f8369-40f0-4151-9b74-1aabcc09a538" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/robinhood.png"><img style="width:528px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/robinhood.png"/></a></figure><p id="8b243b43-9007-44af-ace3-782b30a879f7" class="">Robinhood是一个美股软件，需要实名注册，那在这里所看到的 <code>l[马赛克]y[马赛克]q</code> 和乔楚儿这个名字对不上啊！或许楚儿只是化名的呢~</p><p id="acc1bf78-a2e0-43df-abe8-2af91fb3a6a5" class="">
+</p><p id="deb46e98-852b-4dd0-a8b6-ce0ee1e7c8ec" class="">通过继续搜索这个名字，能搜到两个公开的法院记录。</p><ol id="cac03420-fe54-4424-899a-3659fa1c7f91" class="numbered-list" start="1"><li>原告P*告了L* Qiao，大概是购房签了合同后毁约需要赔付违约金，2018年开始的案子，2020年8月判决原告胜</li></ol><ol id="01db1942-3a12-4480-bec8-3517bfde9d81" class="numbered-list" start="2"><li>L* Qiao 告了其（前）男友，要对方一起付违约金</li></ol><p id="ab44882e-354d-4991-96ca-4a3d14d978d6" class="">具体内容大家可以自己点进去看，不是学法的所以就不多说啦~</p><p id="f44745f5-64c7-46a7-8e4e-60e66cafc6b1" class="">
+</p><figure id="fe8f0bb9-7968-4afd-b841-d93e9f082454"><a href="https://www.pacermonitor.com/public/case/26267808/Qiao_v_Kim" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Qiao v. Kim (1:18-cv-10966), New York Southern District Court</div><div class="bookmark-description">Case Filed: Nov 23, 2018 Terminated: Sep 20, 2019 Freidman Vartolo LLP 85 Broad Street Suite 501 New York, NY 10004 1075 Birch Lane Garnet Valley, PA 19060 John James Powell Montgomery, Mccracken, Walker &amp; Rhoads, Llp (pa) contact info 28-10 Jackson Ave Long Island City, NY 11101 39 39 3 pgs order Order on Motion to Remand to State Court Fri 09/20 2:52 PM ORDER terminating as moot 8 Motion to Remand to State Court; terminating as moot 17 Motion to Remand to State Court.</div></div><div class="bookmark-href"><img src="https://www.pacermonitor.com/favicon.ico" class="icon bookmark-icon"/>https://www.pacermonitor.com/public/case/26267808/Qiao_v_Kim</div></div><img src="https://www.pacermonitor.com/static/img/icons/icon.png" class="bookmark-image"/></a></figure><figure id="9ba4fafe-bd7f-4530-9e8d-7d770bd49bb1"><a href="https://iapps.courts.state.ny.us/nyscef/DocumentList?docketId=/96SkBH2ov0sSa7g0m7Vpg==&amp;display=all&amp;courtType=Queens%20County%20Supreme%20Court&amp;resultsPageNum=1" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Document List</div><div class="bookmark-description">NYSCEF Create an Account Forms FAQs Follow UCS - Twitter Request for Public Comment Unrepresented Litigants Fact Sheet E-File Report Training Terms of Use User Manual Filing Requirements Contact Us Authorized Courts Available Documents Rules &amp; Legislation NYSCEF Updates Login Search as Guest Unrepresented Litigants</div></div><div class="bookmark-href"><img src="https://iapps.courts.state.ny.us/favicon.ico" class="icon bookmark-icon"/>https://iapps.courts.state.ny.us/nyscef/DocumentList?docketId=/96SkBH2ov0sSa7g0m7Vpg==&amp;display=all&amp;courtType=Queens%20County%20Supreme%20Court&amp;resultsPageNum=1</div></div><img src="https://iappscontent.courts.state.ny.us/NYSCEF/live/clerkBanner/QueensClerk.jpg" class="bookmark-image"/></a></figure><p id="98bb3a5a-f4e0-4578-b2f6-481d2465ad39" class="">
+</p><p id="bbd9e3a3-3dba-4f19-b69d-bd6df9890598" class="">但这里关键信息有两点</p><ol id="89471ae2-e0d1-4eae-b7eb-701434c8f78c" class="numbered-list" start="1"><li>2019年的L* Qiao邮寄地址和茶姐所住大楼、办生日会大楼地址一致<figure id="deca3d20-0afe-4dda-9c46-4b0093edd64c" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/kim.png"><img style="width:336px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/kim.png"/></a></figure><p id="a75e512b-53c6-48fa-9dca-3a13bf680053" class="">
+</p></li></ol><ol id="de2365ae-e962-42ad-9bb2-0e0bf12c04f1" class="numbered-list" start="2"><li>L* Qiao是持有永居绿卡的中国公民（起码在当时）<figure id="984d412f-8ab8-4ea6-acbf-3a1cbaf9a641" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65%203.png"><img style="width:528px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65%203.png"/></a></figure><p id="38afe7bd-cc6c-428e-8693-e515eafd7375" class="">
+</p></li></ol><p id="48862772-f6f2-4f55-8200-20bd5914b324" class="">
+</p><p id="05b7a06b-4d9b-40e5-9926-fd48b5540e0c" class="">除此之外，再怎么搜索L* Q也搜不到任何具有社会关系证明的信息了，Linkedin和Facebook都通通没有。</p><p id="d809eed3-eec0-42c2-8188-faef2ac7d17e" class="">但”乔楚儿“Wiki上写的是哥伦比亚大学本科</p><figure id="5d15c461-fec3-4833-a881-68b14f3c9998" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/Untitled%207.png"><img style="width:384px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/Untitled%207.png"/></a></figure><p id="7072d899-e55d-44f4-b6c9-a1539d410221" class="">茶姐Youtube和优酷在2015年的视频里穿的是NYU的上衣</p><figure id="5d475188-ca5b-4b0b-8f06-732f6b6ee6c9" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/youtube_04.png"><img style="width:528px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/youtube_04.png"/></a></figure><p id="cf8c7997-a320-488c-bf03-5902a2110cec" class="">2017年的视频里亲口提到自己已拿到哥大MBA的offer</p><figure id="ee572b8a-a45f-43ae-adb2-475ec100e149" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/Youtube_05.png"><img style="width:528px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/Youtube_05.png"/></a></figure><p id="47de740f-6397-4089-99dc-b6c8e8fe0319" class="">
+</p><p id="b7f5ceb9-e4ac-4d54-b083-dbeafec1aad9" class=""><strong>想必一定是沉迷学习无心社交吧！</strong></p><figure id="a91f7a55-d494-4908-8ccd-fd0727d9a4fe" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3298%201.jpg"><img style="width:288px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3298%201.jpg"/></a></figure><p id="14607735-c957-460f-9cb0-72984b8d0821" class="">
+</p><p id="047cb94b-9a2b-4d21-b993-49a429febcd4" class="">
+</p><p id="e12677a1-6236-4056-89a3-7f35334ad2ae" class="">最后的最后，让我们回归中文互联网。</p><p id="426d35d5-47a9-443b-8e3e-5fe0296d1277" class="">由于L* Qiao的汉字拼写组合，并不多，最后试出来有搜索结果的有两种，但我们在此并没有说以下姓名组合一定和L* Qiao有指代关系哦！</p><p id="2cb8014a-abd8-4c75-94f2-c4876ea05fda" class="">
+</p><h3 id="032d4e51-5fc1-4c51-a4e5-043fb42fbddf" class="">组合一：</h3><figure id="dd2dce07-2c07-47be-85ec-f91ea77c4431" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65%204.png"><img style="width:2064px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65%204.png"/></a></figure><p id="083db16c-3c81-4828-b557-4d0f397348d2" class="">
+</p><p id="bd684ddb-682b-440f-a38e-3ebefb13912e" class="">
+</p><h3 id="d0dd7ccd-001c-4df3-a3d3-7700616cd8fb" class="">组合二：</h3><p id="07d8652f-38e7-4415-afaf-85c4bd3e6582" class="">
+</p><figure id="b089c38b-63b1-4a3b-93e2-710c01fb7a7d" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/_01.png"><img style="width:1312px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/_01.png"/></a></figure><p id="af389870-47a0-4027-ba00-452d3c6af7e4" class="">
+</p><figure id="d15c4879-babd-47f9-889c-fcbc365156c0" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/_02%202.png"><img style="width:1140px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/_02%202.png"/></a></figure><h3 id="7618c014-2818-4ddf-810d-ac096fe93226" class="block-color-red">刚巧不巧，正好在2014年，恰逢”乔楚儿Wiki“诞生的半年前。</h3><p id="3010bef6-86eb-4c62-9b5e-98e3b1310818" class="">
+</p><figure id="c100973c-7b1c-4a3f-bc93-f4183e696abc" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3335%201.jpg"><img style="width:384px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3335%201.jpg"/></a></figure><p id="d2f51e5f-cb58-48c3-ac1c-df6f3d563926" class="">
+</p><p id="2d7266ec-b521-469c-b853-a372a79a72b8" class="">在此科普一个与上文无关的小知识：<strong>有一种美国绿卡途径叫作”政治庇护“</strong>，参考凤姐。</p><p id="83589d73-006d-4109-9e57-fea1b5db272e" class="">
+</p><figure id="c8a0124c-6fc3-4c9d-9655-d6d50336ae13" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3328.jpg"><img style="width:384px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/IMG_3328.jpg"/></a></figure><p id="16e3e63b-e93f-450a-8ca3-60d4ecdd8e05" class="">
+</p><p id="bc242c09-5917-4729-87de-41e74c589967" class="">
+</p><p id="e2aa2047-43dc-4235-b8ce-f79e7b348f59" class="">好啦品茶大宴就此结束，以上全文仅为”公开信息“分享，不涉及任何牵连、指代、认责、定论！</p><p id="85c63b14-bd99-4f74-88c5-a8d28740ecd6" class="">
+</p><figure id="f985975f-bc2c-4c39-a3c6-63981b5a796d" class="image"><a href="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/WechatIMG6588.jpeg"><img style="width:440px" src="%E5%93%81%E8%8C%B6%E5%A4%A7%E8%B5%8F%20acd940e500ef40bdad190a6507d06d65/WechatIMG6588.jpeg"/></a></figure><p id="dc309f09-e333-4e86-8228-501fe4039447" class="">
+</p><p id="5b55b3ae-683f-4749-b062-4be51804c2d0" class="">
+</p></div></article></body></html>
